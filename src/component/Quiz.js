@@ -18,7 +18,6 @@ export default function Quiz(props) {
         className={ans.isHeld ? "ans-btn gray" : "ans-btn"}
         size="small"
         key={ans.id}
-        onClick
         >
         {ans.value}
       </Button>

@@ -1,6 +1,6 @@
 import React from "react";
 import Start from "./component/Start";
-import "./App.css"
+import "./App.css";
 import Quizzes from "./component/Quizzes";
 
 export default function App() {

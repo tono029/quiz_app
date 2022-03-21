@@ -8,15 +8,12 @@ import { nanoid } from "nanoid";
 export default function Quizzes(props) {
   const [quizzesData, setQuizzesData] = React.useState([])
   const [reload, setReload] = React.useState(true)
-
   function handleReload() {
     setReload(prev => !prev)
   }
-
   function closeQuizzes() {
     props.setShowQuiz(false)
   }
-
 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
