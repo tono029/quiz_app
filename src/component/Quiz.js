@@ -2,23 +2,15 @@ import React from "react";
 import Button from "@mui/material/Button"
 
 export default function Quiz(props) {
-  function shuffle(array) {
-    for (let i = array.length - 1; i >= 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
+ 
   // props.answers = [{}, {}, ...]
-  const answerButtons = shuffle(props.answers).map((ans) => {
+  const answerButtons = props.answers.map((ans) => {
     return (
       <Button 
-        variant="contained"
+        variant="contained" size="small"
         className={ans.isHeld ? "ans-btn gray" : "ans-btn"}
-        size="small"
         key={ans.id}
-        >
+      >
         {ans.value}
       </Button>
     )

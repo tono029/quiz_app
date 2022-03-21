@@ -4,7 +4,7 @@ import "./App.css";
 import Quizzes from "./component/Quizzes";
 
 export default function App() {
-  const [showQuiz, setShowQuiz] = React.useState(false)
+  const [showQuiz, setShowQuiz] = React.useState(true)
 
   return (
     <div>
