@@ -7,6 +7,7 @@ import { nanoid } from "nanoid";
 
 export default function Quizzes(props) {
   const [allQuizzes, setAllQuizzes] = React.useState([])
+  const [reload, setReload] = React.useState(true)
 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
@@ -32,10 +33,13 @@ export default function Quizzes(props) {
           }
         })
       ))
-  }, [])
+  }, [reload])
 
   console.log(allQuizzes)
 
+  function handleReload() {
+    setReload(prev => !prev)
+  }
   
 
 
@@ -53,12 +57,12 @@ export default function Quizzes(props) {
 
   return (
     <div className="quizzes">
-      {/* <div className="quizzes-header">
-        <h1 onClick={closeQuizzes}>Quizzes</h1>
+      <div className="quizzes-header">
+        <h1>Quizzes</h1>
         <IconButton onClick={handleReload}>
           <ReplayIcon />
         </IconButton>
-      </div> */}
+      </div>
 
       {quizzes}
 
