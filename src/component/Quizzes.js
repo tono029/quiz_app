@@ -29,19 +29,26 @@ export default function Quizzes(props) {
             ...quiz, 
             id: nanoid(),
             question: decodeURIComponent(quiz.question),
+            correct_answer: decodeURIComponent(quiz.correct_answer),
             all_answers: answersWithId,
           }
         })
       ))
   }, [reload])
 
-  console.log(allQuizzes)
+  console.log("allQuizzes", allQuizzes)
 
   function handleReload() {
     setReload(prev => !prev)
   }
-  
 
+  function handleShow() {
+    props.setShowQuiz(false)
+  }
+  
+  function checkAnswer() {
+
+  }
 
   const quizzes = allQuizzes.map(quiz => {
     return (
@@ -58,7 +65,7 @@ export default function Quizzes(props) {
   return (
     <div className="quizzes">
       <div className="quizzes-header">
-        <h1>Quizzes</h1>
+        <h1 onClick={handleShow}>Quizzes</h1>
         <IconButton onClick={handleReload}>
           <ReplayIcon />
         </IconButton>
@@ -69,6 +76,8 @@ export default function Quizzes(props) {
       <Button 
         className="check-btn"
         variant="contained"
+        // clickでcheckAnswer()
+        onClick={() => checkAnswer()}
       >
         check answers.
       </Button>

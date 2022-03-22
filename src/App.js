@@ -4,7 +4,7 @@ import "./App.css";
 import Quizzes from "./component/Quizzes";
 
 export default function App() {
-  const [showQuiz, setShowQuiz] = React.useState(true)
+  const [showQuiz, setShowQuiz] = React.useState(false)
 
   return (
     <div>
@@ -14,3 +14,9 @@ export default function App() {
     </div>
   )
 }
+
+// to do
+
+// 複数選択を防ぐ。
+// 答えチェック
+// 答えシャッフル
