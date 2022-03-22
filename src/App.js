@@ -17,6 +17,4 @@ export default function App() {
 
 // to do
 
-// 複数選択を防ぐ。
 // 答えチェック
-// 答えシャッフル
