@@ -2,14 +2,25 @@ import React from "react";
 import Button from "@mui/material/Button"
 
 export default function Quiz(props) {
+
+  const [held, setHeld] = React.useState(props.answers)
+
+  function holdAnswer(id) {
+    setHeld(prev => prev.map(ans => {
+      return ans.id === id ?
+        {...ans, isHeld: !ans.isHeld} :
+        ans
+    }))
+  }
  
   // props.answers = [{}, {}, ...]
-  const answerButtons = props.answers.map((ans) => {
+  const answerButtons = held.map((ans) => {
     return (
       <Button 
         variant="contained" size="small"
         className={ans.isHeld ? "ans-btn gray" : "ans-btn"}
         key={ans.id}
+        onClick={() => holdAnswer(ans.id)}
       >
         {ans.value}
       </Button>
