@@ -45,9 +45,17 @@ export default function Quizzes(props) {
   function handleShow() {
     props.setShowQuiz(false)
   }
-  
-  function checkAnswer() {
 
+  function shuffle(array) {
+    for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  
+  function checkAnswers() {
+    
   }
 
   const quizzes = allQuizzes.map(quiz => {
@@ -55,7 +63,7 @@ export default function Quizzes(props) {
       <div>
         <Quiz
           question={quiz.question}
-          answers={quiz.all_answers}
+          answers={shuffle(quiz.all_answers)}
           key={quiz.id}
         />
       </div>
@@ -73,14 +81,20 @@ export default function Quizzes(props) {
 
       {quizzes}
 
-      <Button 
-        className="check-btn"
-        variant="contained"
-        // clickでcheckAnswer()
-        onClick={() => checkAnswer()}
-      >
-        check answers.
-      </Button>
+      <div className="quizzes-footer">
+        
+        {/* 正答率 */}
+        <p></p>
+
+        <Button 
+          className="check-btn"
+          variant="contained"
+          // clickでcheckAnswer()
+          onClick={() => checkAnswers()}
+        >
+          check answers.
+        </Button>
+      </div>
     </div>
   )
 } 

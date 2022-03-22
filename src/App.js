@@ -18,3 +18,5 @@ export default function App() {
 // to do
 
 // 答えチェック
+// カテゴリ選択
+// 難易度選択

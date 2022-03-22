@@ -24,6 +24,13 @@ code {
     monospace;
 }
 
+hr {
+  margin: 10px 0;
+}
+
+
+
+
 /* スマホ用 */
 @media  screen and (max-width: 600px) {
   body {

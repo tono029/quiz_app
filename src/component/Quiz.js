@@ -2,25 +2,21 @@ import React from "react";
 import Button from "@mui/material/Button"
 
 export default function Quiz(props) {
-  function shuffle(array) {
-    for (let i = array.length - 1; i >= 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
+  
 
-  const [answers, setAnswers] = React.useState(shuffle(props.answers))
+  const [answers, setAnswers] = React.useState(props.answers)
 
   // 押したボタンのisHeldをtrue, それ以外をfalseに設定。
   function holdAnswer(id) {
     setAnswers(prev => prev.map(ans => {
       return ans.id === id ?
-        {...ans, isHeld: true} :
+        {...ans, isHeld: !ans.isHeld} :
         {...ans, isHeld: false}
     }))
   }
- 
+  
+  console.log("answers", answers, props.answers)
+
   const answerButtons = answers.map((ans) => {
     return (
       <Button 

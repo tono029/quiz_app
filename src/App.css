@@ -50,6 +50,10 @@
   background-color: teal !important;
 }
 
+.quizzes-footer {
+  display: flex;
+}
+
 /* Quiz.js---------------------- */
 .quiz {
   margin: 0 25px;
@@ -62,7 +66,7 @@
 
 .ans-btn {
   height:auto;
-  margin: 10px !important;
+  margin: 10px 0px 0 10px !important;
   width: auto;
   border-radius: 10px !important;
   background-color: white !important;
