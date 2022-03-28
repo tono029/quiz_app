@@ -18,5 +18,6 @@ export default function App() {
 // to do
 
 // 答えチェック
+// 正答率をフッターに
 // カテゴリ選択
 // 難易度選択
