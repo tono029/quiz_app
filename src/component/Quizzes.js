@@ -7,13 +7,17 @@ import { nanoid } from "nanoid";
 
 export default function Quizzes(props) {
   const [allQuizzes, setAllQuizzes] = React.useState([])
+  const [answers, setAnswers] = React.useState([])
+
   const [reload, setReload] = React.useState(true)
 
   React.useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
-      .then(res => res.json())
-      // この時点で変数にセットする前にデータを整えておく。
-      .then(data => setAllQuizzes(
+    async function getQuizzes() {
+      const res = await fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
+      const data = await res.json()
+      console.log("data.results", data.results)
+
+      setAllQuizzes(
         data.results.map(quiz => {
           const allAnswers = quiz.incorrect_answers.concat(quiz.correct_answer)
           const answersWithId = []
@@ -33,10 +37,15 @@ export default function Quizzes(props) {
             all_answers: answersWithId,
           }
         })
-      ))
-  }, [reload])
+      )
 
-  console.log("allQuizzes", allQuizzes)
+      // answersもセットする
+
+
+    }
+
+    getQuizzes()
+  }, [reload])
 
   function shuffle(array) {
     for (let i = array.length - 1; i >= 0; i--) {
@@ -46,9 +55,7 @@ export default function Quizzes(props) {
     return array;
   }
   
-  function checkAnswers() {
-    
-  }
+  console.log("allQuizzes", allQuizzes)
 
   const quizzes = allQuizzes.map(quiz => {
     return (
