@@ -38,10 +38,6 @@ export default function Quizzes(props) {
 
   console.log("allQuizzes", allQuizzes)
 
-  function handleReload() {
-    setReload(prev => !prev)
-  }
-
   function handleShow() {
     props.setShowQuiz(false)
   }
@@ -74,7 +70,7 @@ export default function Quizzes(props) {
     <div className="quizzes">
       <div className="quizzes-header">
         <h1 onClick={handleShow}>Quizzes</h1>
-        <IconButton onClick={handleReload}>
+        <IconButton onClick={() => setReload(!reload)}>
           <ReplayIcon />
         </IconButton>
       </div>
