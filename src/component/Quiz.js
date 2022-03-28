@@ -2,22 +2,24 @@ import React from "react";
 import Button from "@mui/material/Button"
 
 export default function Quiz(props) {
-  
-
-  const [answers, setAnswers] = React.useState(props.answers)
-
   // 押したボタンのisHeldをtrue, それ以外をfalseに設定。
+  // function holdAnswer(id) {
+  //   props.setAnswers(oldAnswers => oldAnswers.map(ans => {
+  //     return ans.id === id ?
+  //       {...ans, isHeld: !ans.isHeld} :
+  //       {...ans, isHeld: false}
+  //   }))
+  // }
+  
   function holdAnswer(id) {
-    setAnswers(prev => prev.map(ans => {
-      return ans.id === id ?
-        {...ans, isHeld: !ans.isHeld} :
-        {...ans, isHeld: false}
+    props.setAllQuizzes(oldQuizzes => oldQuizzes.map(quiz => {
+      return {
+        ...quiz
+      }
     }))
   }
-  
-  console.log("answers", answers, props.answers)
 
-  const answerButtons = answers.map((ans) => {
+  const answerButtons = props.answers.map(ans => {
     return (
       <Button 
         variant="contained" size="small"

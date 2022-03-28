@@ -7,7 +7,6 @@ import { nanoid } from "nanoid";
 
 export default function Quizzes(props) {
   const [allQuizzes, setAllQuizzes] = React.useState([])
-  const [answers, setAnswers] = React.useState([])
 
   const [reload, setReload] = React.useState(true)
 
@@ -15,7 +14,6 @@ export default function Quizzes(props) {
     async function getQuizzes() {
       const res = await fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
       const data = await res.json()
-      console.log("data.results", data.results)
 
       setAllQuizzes(
         data.results.map(quiz => {
@@ -38,10 +36,6 @@ export default function Quizzes(props) {
           }
         })
       )
-
-      // answersもセットする
-
-
     }
 
     getQuizzes()
@@ -62,7 +56,8 @@ export default function Quizzes(props) {
       <div>
         <Quiz
           question={quiz.question}
-          answers={shuffle(quiz.all_answers)}
+          answers={quiz.all_answers}
+          setAllQuizzes={setAllQuizzes}
           key={quiz.id}
         />
       </div>
@@ -89,7 +84,7 @@ export default function Quizzes(props) {
           className="check-btn"
           variant="contained"
           // clickでcheckAnswer()
-          onClick={() => checkAnswers()}
+
         >
           check answers.
         </Button>
