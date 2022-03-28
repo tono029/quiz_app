@@ -38,10 +38,6 @@ export default function Quizzes(props) {
 
   console.log("allQuizzes", allQuizzes)
 
-  function handleShow() {
-    props.setShowQuiz(false)
-  }
-
   function shuffle(array) {
     for (let i = array.length - 1; i >= 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -69,7 +65,7 @@ export default function Quizzes(props) {
   return (
     <div className="quizzes">
       <div className="quizzes-header">
-        <h1 onClick={handleShow}>Quizzes</h1>
+        <h1 onClick={() => props.setShowQuiz(false)}>Quizzes</h1> 
         <IconButton onClick={() => setReload(!reload)}>
           <ReplayIcon />
         </IconButton>
