@@ -9,6 +9,7 @@ export default function Quizzes(props) {
   const [allQuizzes, setAllQuizzes] = React.useState([])
 
   const [reload, setReload] = React.useState(true)
+  const [showCheck, setShowCheck] = React.useState(true)
 
   function shuffle(array) {
     for (let i = array.length - 1; i >= 0; i--) {
@@ -51,16 +52,29 @@ export default function Quizzes(props) {
   
   console.log("allQuizzes", allQuizzes)
 
+  const score = 0
+  function handleCheck() {
+    setShowCheck(prev => !prev)
+
+    // 答え合わせの処理
+    
+
+
+  }
+
+  function handleReload() {
+    setShowCheck(true)
+    setReload(prev => !prev)
+  }
+
   const quizzes = allQuizzes.map(quiz => {
     return (
-      <div>
-        <Quiz
-          question={quiz.question}
-          answers={quiz.all_answers}
-          setAllQuizzes={setAllQuizzes}
-          key={quiz.id}
-        />
-      </div>
+      <Quiz
+        question={quiz.question}
+        answers={quiz.all_answers}
+        setAllQuizzes={setAllQuizzes}
+        key={quiz.id}
+      />
     )
   })
 
@@ -68,7 +82,7 @@ export default function Quizzes(props) {
     <div className="quizzes">
       <div className="quizzes-header">
         <h1 onClick={() => props.setShowQuiz(false)}>Quizzes</h1> 
-        <IconButton onClick={() => setReload(!reload)}>
+        <IconButton onClick={handleReload}>
           <ReplayIcon />
         </IconButton>
       </div>
@@ -76,18 +90,29 @@ export default function Quizzes(props) {
       {quizzes}
 
       <div className="quizzes-footer">
+        {showCheck 
+          ? 
+          <Button 
+            className="check-btn"
+            variant="contained"
+            onClick={handleCheck}
+          >
+            check answers.
+          </Button>
+          :
+          <>
+            <p>you scored <span>{score}/5</span> correct answers.</p>
+            <Button
+              className="again-btn"
+              variant="contained"
+              onClick={handleReload}
+            >
+              play again.
+            </Button>
+          </>
+
+        }
         
-        {/* 正答率 */}
-        <p></p>
-
-        <Button 
-          className="check-btn"
-          variant="contained"
-          // clickでcheckAnswer()
-
-        >
-          check answers.
-        </Button>
       </div>
     </div>
   )

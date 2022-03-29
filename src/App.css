@@ -52,6 +52,17 @@
 
 .quizzes-footer {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.again-btn {
+  font-size: 1rem;
+  height: 3rem;
+  display: block !important;
+  margin: 20px !important;
+  background-color: teal !important;
 }
 
 /* Quiz.js---------------------- */
