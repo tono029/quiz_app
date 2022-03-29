@@ -13,8 +13,25 @@ export default function Quiz(props) {
   
   function holdAnswer(id) {
     props.setAllQuizzes(oldQuizzes => oldQuizzes.map(quiz => {
+      const newAnswers = []
+
+      // 複数選択できないようにする
+      quiz.all_answers.map(ans => {
+        if (ans.id === id) {
+          newAnswers.push(
+            {...ans, isHeld: !ans.isHeld} 
+          )
+        } else {
+          newAnswers.push(
+            {...ans}
+          )
+        }
+      })
+
+
       return {
-        ...quiz
+        ...quiz,
+        all_answers: newAnswers
       }
     }))
   }

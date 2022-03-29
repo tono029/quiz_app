@@ -10,6 +10,14 @@ export default function Quizzes(props) {
 
   const [reload, setReload] = React.useState(true)
 
+  function shuffle(array) {
+    for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
   React.useEffect(() => {
     async function getQuizzes() {
       const res = await fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
@@ -32,7 +40,7 @@ export default function Quizzes(props) {
             id: nanoid(),
             question: decodeURIComponent(quiz.question),
             correct_answer: decodeURIComponent(quiz.correct_answer),
-            all_answers: answersWithId,
+            all_answers: shuffle(answersWithId),
           }
         })
       )
@@ -40,14 +48,6 @@ export default function Quizzes(props) {
 
     getQuizzes()
   }, [reload])
-
-  function shuffle(array) {
-    for (let i = array.length - 1; i >= 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
   
   console.log("allQuizzes", allQuizzes)
 
