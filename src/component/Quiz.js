@@ -50,11 +50,50 @@ export default function Quiz(props) {
     )
   })
 
+  const checkedAnswerButtons = props.answers.map(ans => {
+    const correctAns = {
+      backgroundColor: "teal",
+      color: "white",
+      height: "auto",
+      margin: "10px 0px 0px 10px",
+      width: "auto",
+      borderRadius: "10px",
+    }
+
+    function back(){
+      if (ans.isHeld && ans.value !== props.correct_answer) {
+        return "#D8000C"
+      } else {
+        return "white"
+      }
+    }
+    const normalStyle = {
+      backgroundColor: back(),
+      color: "black",
+      height: "auto",
+      margin: "10px 0px 0px 10px",
+      width: "auto",
+      borderRadius: "10px",
+      opacity: 0.3,
+    }
+
+    return (
+      <Button 
+        variant="contained" size="small"
+        disabled
+        style={ans.value === props.correct_answer ? correctAns : normalStyle}
+        key={ans.id}
+      >
+        {ans.value}
+      </Button>
+  )
+})
+
   return (
     <div className="quiz">
       <p>{props.question}</p>
 
-      {answerButtons}
+      {props.showCheck ? answerButtons : checkedAnswerButtons}
 
       <hr />
     </div>

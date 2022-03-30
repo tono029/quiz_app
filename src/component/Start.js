@@ -6,6 +6,10 @@ export default function Start(props) {
     <div className="start">
       <h1>Quiz</h1>
       <p>Let's challenge!</p>
+
+      {/* カテゴリ選択ボタン */}
+      
+
       <Button 
         variant="contained"
         className="start-btn"

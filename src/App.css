@@ -32,14 +32,14 @@
 
 .quizzes-header button {
   color: white;
-  padding: 0;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .quizzes h1 {
   text-align: center;
+  align-items: center;
   margin: 0 20px 0 0;
-  cursor: pointer;
 }
 
 .check-btn {
@@ -56,6 +56,10 @@
   justify-content: center;
 }
 
+.quizzes-footer span {
+  font-size: 30px;
+  margin: 0 5px;
+}
 
 .again-btn {
   font-size: 1rem;
@@ -84,7 +88,16 @@
   color: black !important;
 }
 
+.checked-ans {
+  height:auto;
+  margin: 10px 0px 0 10px !important;
+  width: auto;
+  border-radius: 10px !important;
+  background-color: white !important;
+  color: black !important;
+}
+
 .gray {
   background-color: gray !important;
-  color: white !important;
+  color: black !important;
 }

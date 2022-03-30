@@ -3,7 +3,9 @@ import Button from "@mui/material/Button"
 import Quiz from "./Quiz";
 import { IconButton } from "@mui/material";
 import ReplayIcon from '@mui/icons-material/Replay';
+import HomeIcon from '@mui/icons-material/Home';
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti"
 
 export default function Quizzes(props) {
   const [allQuizzes, setAllQuizzes] = React.useState([])
@@ -19,6 +21,7 @@ export default function Quizzes(props) {
     return array;
   }
 
+  // quizData読み込み
   React.useEffect(() => {
     async function getQuizzes() {
       const res = await fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
@@ -52,12 +55,23 @@ export default function Quizzes(props) {
   
   console.log("allQuizzes", allQuizzes)
 
-  const score = 0
+  const [score, setScore] = React.useState(0)
   function handleCheck() {
     setShowCheck(prev => !prev)
 
     // 答え合わせの処理
-    
+
+    allQuizzes.map(quiz => {
+      quiz.all_answers.map(ans => {
+        // 正解の時
+        if (ans.isHeld === true && ans.value === quiz.correct_answer) {
+          setScore(prev => ++prev)
+          console.log(score)
+        } else {
+
+        }
+      })
+    })
 
 
   }
@@ -65,6 +79,7 @@ export default function Quizzes(props) {
   function handleReload() {
     setShowCheck(true)
     setReload(prev => !prev)
+    setScore(0)
   }
 
   const quizzes = allQuizzes.map(quiz => {
@@ -72,7 +87,9 @@ export default function Quizzes(props) {
       <Quiz
         question={quiz.question}
         answers={quiz.all_answers}
+        correct_answer={quiz.correct_answer}
         setAllQuizzes={setAllQuizzes}
+        showCheck={showCheck}
         key={quiz.id}
       />
     )
@@ -81,7 +98,11 @@ export default function Quizzes(props) {
   return (
     <div className="quizzes">
       <div className="quizzes-header">
-        <h1 onClick={() => props.setShowQuiz(false)}>Quizzes</h1> 
+        <h1>Quizzes</h1>
+        <IconButton onClick={() => props.setShowQuiz(false)}>
+          <HomeIcon />
+        </IconButton>
+
         <IconButton onClick={handleReload}>
           <ReplayIcon />
         </IconButton>
@@ -101,7 +122,8 @@ export default function Quizzes(props) {
           </Button>
           :
           <>
-            <p>you scored <span>{score}/5</span> correct answers.</p>
+            {score === 5 && <Confetti tweenDuration="10" />}
+            <p>You scored <span>{score}/5</span> correct answers!</p>
             <Button
               className="again-btn"
               variant="contained"
