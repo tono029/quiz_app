@@ -14,7 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("C:\Users\tonoy\quiz_app\blob-scene-haikei.svg");
-  background-repeat: no-repeat;
+  background-repeat: no-repeat repeat;
   background-size: cover;
   background-position: center;
 }
@@ -46,7 +46,7 @@ hr {
     -moz-osx-font-smoothing: grayscale;
     /* imgを幅の狭いものに変更 */
     background-image: url("C:\Users\tonoy\quiz_app\blob-scene-tight-haikei.svg");
-    background-repeat: no-repeat;
+    background-repeat: no-repeat repeat;
     background-size: cover;
     background-position: center;
   }

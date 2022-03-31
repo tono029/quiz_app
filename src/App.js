@@ -30,5 +30,4 @@ export default function App() {
 // to do
 
 // haikei
-// カテゴリ選択
 // 難易度選択
