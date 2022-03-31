@@ -5,7 +5,7 @@ import Quizzes from "./component/Quizzes";
 
 export default function App() {
   const [showQuiz, setShowQuiz] = React.useState(false)
-  const [category, setCategory] = React.useState("")
+  const [category, setCategory] = React.useState(0)
 
   return (
     <>
@@ -21,6 +21,7 @@ export default function App() {
         <Quizzes 
           setShowQuiz={setShowQuiz}
           category={category}
+          setCategory={setCategory}
         />
       }
     </>
@@ -29,5 +30,5 @@ export default function App() {
 
 // to do
 
-// haikei
 // 難易度選択
+// 複数選択できないように

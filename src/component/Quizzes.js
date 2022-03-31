@@ -25,6 +25,8 @@ export default function Quizzes(props) {
   React.useEffect(() => {
     const category = props.category
     async function getQuizzes() {
+
+
       const res = await fetch(`https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&encode=url3986`)
       const data = await res.json()
 
@@ -82,6 +84,11 @@ export default function Quizzes(props) {
     setScore(0)
   }
 
+  function handleHome() {
+    props.setShowQuiz(false)
+    props.setCategory(0)
+  }
+
   const quizzes = allQuizzes.map(quiz => {
     return (
       <Quiz
@@ -99,7 +106,7 @@ export default function Quizzes(props) {
     <div className="quizzes">
       <div className="quizzes-header">
         <h1>Quizzes</h1>
-        <IconButton onClick={() => props.setShowQuiz(false)}>
+        <IconButton onClick={handleHome}>
           <HomeIcon />
         </IconButton>
 
