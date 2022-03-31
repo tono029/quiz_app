@@ -1,7 +1,12 @@
 /* Start.js-------------------------- */
 .start {
   text-align: center;
-  color: white;
+  font-weight: 500;
+  color: black !important;
+}
+
+.start p {
+  margin-bottom: 0;
 }
 
 .start-btn {
@@ -15,13 +20,18 @@
   cursor: pointer;
 }
 
-/* Quizzes.js----------------------------- */
-.quizzes {
-  color: white;
-  margin: 1rem 3rem;
+/* Category.js */
+.category-select {
+  color: white !important;
+  margin-bottom: 20px;
+  padding: 0px;
 }
 
-
+/* Quizzes.js----------------------------- */
+.quizzes {
+  color: black;
+  margin: 1rem 3rem;
+}
 
 .quizzes-header {
   display: flex;
@@ -31,7 +41,7 @@
 }
 
 .quizzes-header button {
-  color: white;
+  color: black;
   cursor: pointer;
   margin-top: 10px;
 }
@@ -54,11 +64,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+} 
+ 
+.quizzes-footer p {
+  font-size: 18px;
 }
 
 .quizzes-footer span {
   font-size: 30px;
   margin: 0 5px;
+  color: limegreen;
 }
 
 .again-btn {
@@ -76,6 +91,7 @@
 
 .quiz p {
   font-size: 1rem;
+  font-weight: 500;
   margin: 0;
 }
 

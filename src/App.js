@@ -5,17 +5,30 @@ import Quizzes from "./component/Quizzes";
 
 export default function App() {
   const [showQuiz, setShowQuiz] = React.useState(false)
+  const [category, setCategory] = React.useState("")
 
   return (
     <>
-      {!showQuiz && <Start showQuiz={showQuiz} setShowQuiz={setShowQuiz} />}
+      {!showQuiz && 
+        <Start 
+          showQuiz={showQuiz}  
+          setShowQuiz={setShowQuiz}
+          setCategory={setCategory}
+        />
+      }
       
-      {showQuiz && <Quizzes setShowQuiz={setShowQuiz} />}
+      {showQuiz && 
+        <Quizzes 
+          setShowQuiz={setShowQuiz}
+          category={category}
+        />
+      }
     </>
   )
 }
 
 // to do
 
+// haikei
 // カテゴリ選択
 // 難易度選択
