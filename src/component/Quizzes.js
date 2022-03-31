@@ -23,8 +23,9 @@ export default function Quizzes(props) {
 
   // quizData読み込み
   React.useEffect(() => {
+    const category = props.category
     async function getQuizzes() {
-      const res = await fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple&encode=url3986")
+      const res = await fetch(`https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&encode=url3986`)
       const data = await res.json()
 
       setAllQuizzes(
@@ -66,7 +67,6 @@ export default function Quizzes(props) {
         // 正解の時
         if (ans.isHeld === true && ans.value === quiz.correct_answer) {
           setScore(prev => ++prev)
-          console.log(score)
         } else {
 
         }

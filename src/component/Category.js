@@ -38,7 +38,6 @@ export default function Category(props) {
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="cate">Category</InputLabel>
         <Select
-          className="category-select"
           labelId="cate"
           onChange={selectCategory}
           label="Category"
