@@ -27,7 +27,9 @@ export default function Quizzes(props) {
     async function getQuizzes() {
 
 
-      const res = await fetch(`https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&encode=url3986`)
+      const res = await fetch(
+        `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&encode=url3986`
+        )
       const data = await res.json()
 
       setAllQuizzes(
@@ -57,6 +59,7 @@ export default function Quizzes(props) {
   }, [reload])
   
   console.log("allQuizzes", allQuizzes)
+  console.log("cate", props.category)
 
   const [score, setScore] = React.useState(0)
   function handleCheck() {
@@ -89,6 +92,12 @@ export default function Quizzes(props) {
     props.setCategory(0)
   }
 
+  const selectedCategory = props.selectIndex.map(cate => {
+    if (cate.value === props.category) {
+      return cate.label
+    }
+  })
+
   const quizzes = allQuizzes.map(quiz => {
     return (
       <Quiz
@@ -105,14 +114,20 @@ export default function Quizzes(props) {
   return (
     <div className="quizzes">
       <div className="quizzes-header">
-        <h1>Quizzes</h1>
-        <IconButton onClick={handleHome}>
-          <HomeIcon />
-        </IconButton>
+        <div className="header-top">
+          <h1>Quizzes</h1>
+          <IconButton onClick={handleHome}>
+            <HomeIcon />
+          </IconButton>
+  
+          <IconButton onClick={handleReload}>
+            <ReplayIcon />
+          </IconButton>
+        </div>
 
-        <IconButton onClick={handleReload}>
-          <ReplayIcon />
-        </IconButton>
+        <div className="header-bottom">
+          <p>Category: <span>{selectedCategory}</span></p>
+        </div>
       </div>
 
       {quizzes}

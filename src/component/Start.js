@@ -10,7 +10,7 @@ export default function Start(props) {
 
       {/* カテゴリ選択ボタン */}
       <p>Select category.</p>
-      <Category setCategory={props.setCategory} />
+      <Category setCategory={props.setCategory} selectIndex={props.selectIndex} />
 
       <Button 
         variant="contained"
