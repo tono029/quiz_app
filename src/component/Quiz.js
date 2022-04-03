@@ -2,15 +2,6 @@ import React from "react";
 import Button from "@mui/material/Button"
 
 export default function Quiz(props) {
-  // 押したボタンのisHeldをtrue, それ以外をfalseに設定。
-  // function holdAnswer(id) {
-  //   props.setAnswers(oldAnswers => oldAnswers.map(ans => {
-  //     return ans.id === id ?
-  //       {...ans, isHeld: !ans.isHeld} :
-  //       {...ans, isHeld: false}
-  //   }))
-  // }
-  
   function holdAnswer(id) {
     props.setAllQuizzes(oldQuizzes => oldQuizzes.map(quiz => {
       const newAnswers = []

@@ -59,7 +59,6 @@ export default function Quizzes(props) {
   }, [reload])
   
   console.log("allQuizzes", allQuizzes)
-  console.log("cate", props.category)
 
   const [score, setScore] = React.useState(0)
   function handleCheck() {

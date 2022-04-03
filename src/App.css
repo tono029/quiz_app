@@ -78,6 +78,7 @@
  
 .quizzes-footer p {
   font-size: 18px;
+  font-weight: 500;
 }
 
 .quizzes-footer span {
@@ -124,6 +125,6 @@
 }
 
 .gray {
-  background-color: gray !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
   color: black !important;
 }
