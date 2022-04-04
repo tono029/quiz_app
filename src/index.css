@@ -13,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("C:\Users\tonoy\quiz_app\blob-scene-haikei.svg");
+  background-image: url("C:\Users\tonoy\quiz_app\public\blob-scene-haikei.svg");
   background-repeat: no-repeat repeat;
   background-size: cover;
   background-position: center;
@@ -47,7 +47,7 @@ span {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* imgを幅の狭いものに変更 */
-    background-image: url("C:\Users\tonoy\quiz_app\blob-scene-tight-haikei.svg");
+    background-image: url("C:\Users\tonoy\quiz_app\public\blob-scene-tight-haikei.svg");
     background-repeat: no-repeat repeat;
     background-size: cover;
     background-position: center;
