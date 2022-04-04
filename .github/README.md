@@ -12,4 +12,7 @@
 * Material UI
 
 # 機能
-* 
+* [Trivia API](https://opentdb.com/api_config.php)
+からのデータ取得。
+* 答えのチェック, スコア
+* 出題カテゴリの選択
